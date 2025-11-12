@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Certificates | John Roy Geralde</title>
-  <!-- ✅ Favicon -->
   <link rel="icon" type="image/x-icon" href="portfolio.png">
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
@@ -49,7 +48,7 @@
       box-sizing: border-box;
     }
 
-    /* Header with Home shortcut */
+    /* Header */
     .header-row {
       display: flex;
       justify-content: space-between;
@@ -83,11 +82,6 @@
       border: 1px solid #003366;
     }
 
-    .home-shortcut i {
-      color: white !important;
-      transition: color 0.3s ease;
-    }
-
     .home-shortcut:hover {
       background-color: white;
       color: black;
@@ -95,14 +89,31 @@
       transform: scale(1.05);
     }
 
+    .home-shortcut i {
+      color: white;
+      transition: color 0.3s ease;
+    }
+
     .home-shortcut:hover i {
       color: black !important;
     }
 
+    /* Two-column layout */
+    .certificates-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    @media screen and (max-width: 900px) {
+      .certificates-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* Certificate Cards */
     .w3-card {
-      margin-top: 30px;
-      margin-bottom: 40px;
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -117,6 +128,7 @@
     .w3-card img {
       border-radius: 0;
       transition: transform 0.3s ease;
+      width: 100%;
     }
 
     .w3-card:hover img {
@@ -129,7 +141,7 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      z-index: 999;
+      z-index: 9999;
       background-color: #003366;
       color: white;
       border: none;
@@ -156,6 +168,7 @@
       background-color: #003366 !important;
       color: white;
       text-align: center;
+      margin-top: auto;
     }
 
     footer a {
@@ -165,19 +178,6 @@
 
     footer a:hover {
       text-decoration: underline;
-    }
-
-    /* Responsive */
-    @media screen and (max-width: 600px) {
-      .main-container {
-        padding: 20px;
-      }
-      h2 {
-        font-size: 1.5em;
-      }
-      .home-shortcut {
-        margin-top: 10px;
-      }
     }
   </style>
 </head>
@@ -190,38 +190,48 @@
     <a href="certificates.html" class="w3-bar-item w3-button"><i class="fa fa-certificate"></i> My Certificates</a>
   </div>
 
-  <!-- ✅ Content -->
+  <!-- ✅ Main Content -->
   <div class="main-container w3-animate-opacity">
     <div class="header-row">
       <h2><i class="fa fa-certificate"></i> My Certificates</h2>
       <a href="index.html" class="home-shortcut"><i class="fa fa-home"></i> Home</a>
     </div>
     <hr>
-    <div class="w3-container w3-card w3-white">
-      <h2 class="w3-text-grey w3-padding-16">
-        <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge"></i>My English Certification from EF Set
-      </h2>
-      <div class="w3-container">
-        <img src="efset.jpg" style="width:60%" alt="EF Set Certificate">
-      </div>
-    </div>
 
-    <div class="w3-container w3-card w3-white">
-      <h2 class="w3-text-grey w3-padding-16">
-        <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge"></i>My Coursera GraphQL Training
-      </h2>
-      <div class="w3-container">
-        <img src="CourseraGraphQL.JPG" style="width:60%" alt="GraphQL Certificate">
-      </div>
-    </div>
+    <!-- ✅ Two-column container -->
+    <div class="certificates-container">
 
-    <div class="w3-container w3-card w3-white">
-      <h2 class="w3-text-grey w3-padding-16">
-        <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge"></i>My Coursera ReactJS Basics Training
-      </h2>
-      <div class="w3-container">
-        <img src="CourseraReactBasics.JPG" style="width:60%" alt="ReactJS Certificate">
+      <!-- Left Column: EF Set -->
+      <div class="w3-container w3-card w3-white">
+        <h2 class="w3-text-grey w3-padding-16">
+          <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge"></i>My English Certification from EF Set
+        </h2>
+        <div class="w3-container">
+          <img src="efset.jpg" alt="EF Set Certificate">
+        </div>
       </div>
+
+      <!-- Right Column: Coursera -->
+      <div>
+        <div class="w3-container w3-card w3-white" style="margin-bottom: 30px;">
+          <h2 class="w3-text-grey w3-padding-16">
+            <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge"></i>My Coursera GraphQL Training
+          </h2>
+          <div class="w3-container">
+            <img src="CourseraGraphQL.JPG" alt="GraphQL Certificate">
+          </div>
+        </div>
+
+        <div class="w3-container w3-card w3-white">
+          <h2 class="w3-text-grey w3-padding-16">
+            <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge"></i>My Coursera ReactJS Basics Training
+          </h2>
+          <div class="w3-container">
+            <img src="CourseraReactBasics.JPG" alt="ReactJS Certificate">
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -242,7 +252,6 @@
   <!-- ✅ Scroll-to-Top Script -->
   <script>
     const topBtn = document.getElementById("backToTop");
-
     window.onscroll = function() {
       if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
         topBtn.style.display = "block";
@@ -250,7 +259,6 @@
         topBtn.style.display = "none";
       }
     };
-
     topBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
